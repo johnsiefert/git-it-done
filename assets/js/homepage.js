@@ -27,7 +27,8 @@ let getUserRepos = function(user) {
       // request was successful
       if (response.ok) {
         console.log(response);
-        response.json().then(function(data) {
+        response.json()
+        .then(function(data) {
           console.log(data);
           displayRepos(data, user);
         });
@@ -52,12 +53,12 @@ let getUserRepos = function(user) {
     for(let i = 0; i < repos.length; i++){
         //format repo name
         let repoName = repos[i].owner.login + "/" + repos[i].name;
-
-        //create a container for each repo
-        let repoEl = document.createElement("div");
+     
+        // create a container for each repo
+       let repoEl = document.createElement("a");
         repoEl.classList = "list-item flex-row justify-space-between align-center";
-
-        //create a span element to hold repository name
+        repoEl.setAttribute("href", "./single-repo.html?repo=" + repoName);
+  // create a span element to hold repository name
         let titleEl = document.createElement("span");
         titleEl.textContent = repoName;
 
